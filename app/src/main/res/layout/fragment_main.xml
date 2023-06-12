@@ -10,8 +10,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_height="300dp"
+        android:layout_height="270dp"
         android:background="@drawable/main"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,7 +51,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="420dp"
         app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,6 +83,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
                         android:text="191 см"
+                        android:textColor="@color/black"
                         android:id="@+id/tvHeight"
                         android:textSize="25sp" />
 
@@ -92,6 +92,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Мой рост"
+                        android:textColor="@color/black"
                         android:textSize="20sp" />
                 </LinearLayout>
 
@@ -102,6 +103,7 @@
                 android:layout_height="80dp"
                 android:layout_marginTop="10dp"
                 app:cardCornerRadius="15dp"
+                android:layout_marginRight="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="MissingConstraints">
@@ -109,7 +111,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="10dp"
+
                     android:orientation="vertical">
 
                     <TextView
@@ -117,6 +119,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="95 см"
+                        android:textColor="@color/black"
                         android:id="@+id/tvWeight"
                         android:layout_marginTop="10dp"
                         android:textSize="25sp" />
@@ -126,6 +129,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Мой вес"
+                        android:textColor="@color/black"
                         android:textSize="20sp" />
                 </LinearLayout>
 
@@ -137,6 +141,7 @@
                 android:layout_width="355dp"
                 android:layout_height="170dp"
                 app:cardCornerRadius="15dp"
+                android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView"
@@ -145,10 +150,11 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
+
                     android:orientation="vertical">
 
                     <TextView
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="start"
@@ -157,6 +163,7 @@
                         android:text="Воды сегодня выпито:"
                         android:textSize="20sp" />
                     <TextView
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="start"
@@ -185,19 +192,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Моя активность"
+                android:textColor="@color/black"
                 app:layout_constraintBottom_toTopOf="@+id/rvActivity"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView3"
                 tools:ignore="MissingConstraints" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvActivity"
+                android:layout_marginBottom="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="100dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:listitem="@layout/list_activity"
-                >
-            </androidx.recyclerview.widget.RecyclerView>
+                tools:listitem="@layout/list_activity"></androidx.recyclerview.widget.RecyclerView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

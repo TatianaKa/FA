@@ -1,15 +1,13 @@
 package com.example.fa.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.fa.R
 import com.example.fa.adapter.WorkoutAdapter
 import com.example.fa.databinding.FragmentWorkoutBinding
 import com.example.fa.model.Workout
@@ -75,6 +73,7 @@ class WorkoutFragment : Fragment() {
                     Glide.with(binding.root.context).load(document.data.get("url")).into(binding.imgUserWorkout)
                     db.collection("Workout").whereEqualTo("tag",document.data.get("Tag").toString()).get()
                         .addOnSuccessListener {
+                            var duration=0
                             if(!it.isEmpty){
                                 for(data in it.documents){
                                     val workout: Workout? =data.toObject(Workout::class.java)
@@ -82,15 +81,22 @@ class WorkoutFragment : Fragment() {
                                         workoutList.add(workout)
                                     }
                                 }
+
                                 // binding.rvWorkout.adapter= WorkoutAdapter(workoutList )
                                 var adapter= WorkoutAdapter(workoutList)
                                 binding.rvWorkout.adapter=adapter
                                 adapter.setOnTimeClickListener(
                                     object :WorkoutAdapter.onItemClickListener{
                                         override fun onItemClick(position: Int) {
-                                            binding.tvTimeWorkout.setText(workoutList[position].name.toString())
+                                            val activity = hashMapOf(
+                                                "UserEmail" to user.currentUser?.email,
+                                                "Date" to "$day $nameMonth",
+                                                "Duration" to workoutList[position].timeWork
+                                            )
+                                            db.collection("Activity").add(activity)
+                                                .addOnSuccessListener {
+                                                }
                                         }
-
                                     }
                                 )
                             }

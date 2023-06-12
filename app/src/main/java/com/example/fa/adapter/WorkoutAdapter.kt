@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fa.R
+import com.example.fa.model.Activity
 import com.example.fa.model.Workout
-import java.util.ArrayList
+import kotlin.collections.ArrayList
 
 class WorkoutAdapter(private val workoutList: ArrayList<Workout>): RecyclerView.Adapter<WorkoutAdapter.WorkoutHolder>(){
     private lateinit var mListener:onItemClickListener
@@ -31,7 +32,7 @@ class WorkoutAdapter(private val workoutList: ArrayList<Workout>): RecyclerView.
         val currentItem=workoutList[position]
         holder.tvNameWorkout.text=currentItem.name
         holder.tvDescWorkout.text=currentItem.description
-        holder.tvTimeWorkout.text=currentItem.time
+        holder.tvTimeWorkout.text=currentItem.timeWork
     }
 
     class WorkoutHolder(itemView: View, listener: onItemClickListener): RecyclerView.ViewHolder(itemView){

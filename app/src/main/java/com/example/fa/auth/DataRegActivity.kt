@@ -24,6 +24,8 @@ class DataRegActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_data_reg)
+
+        supportActionBar?.hide();
         etRegWeight=findViewById(R.id.etRegWeight)
         etRegHeight=findViewById(R.id.etRegHeight)
         etRegAge=findViewById(R.id.etRegAge)
