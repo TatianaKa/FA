@@ -12,6 +12,9 @@
         android:theme="@style/Theme.FA"
         tools:targetApi="31">
         <activity
+            android:name=".main.EditDataActivity"
+            android:exported="false" />
+        <activity
             android:name=".DetailActivity"
             android:exported="false" />
         <activity

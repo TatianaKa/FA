@@ -1,5 +1,6 @@
 package com.example.fa.fragment
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.example.fa.adapter.ActivityAdapter
 import com.example.fa.adapter.WorkoutAdapter
 import com.example.fa.databinding.FragmentMainBinding
+import com.example.fa.main.EditDataActivity
 import com.example.fa.model.Activity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -63,9 +65,28 @@ class MainFragment : Fragment() {
             11->nameMonth="ноября"
             12->nameMonth="декабря"
         }
+
+        binding.cvHeight.setOnClickListener {
+            val intent= Intent(binding.root.context, EditDataActivity::class.java)
+            intent.putExtra("type","Height")
+            startActivity(intent)
+        }
+        binding.cvWeight.setOnClickListener {
+            val intent=Intent(binding.root.context,EditDataActivity::class.java)
+            intent.putExtra("type","Weight")
+            startActivity(intent)
+        }
+
         binding.btnAddWater.setOnClickListener {
             qtyGlass+=1
-            binding.tvQty.text="$qtyGlass стакан"
+            var glass="стакан"
+            if(qtyGlass>=1 && qtyGlass<6){
+                glass="стакана"
+            }
+            else if(qtyGlass>=6){
+                glass="стаканов"
+            }
+            binding.tvQty.text="$qtyGlass $glass"
         }
 
         binding.tvDateMain.setText("$dayWeek ,$day $nameMonth")

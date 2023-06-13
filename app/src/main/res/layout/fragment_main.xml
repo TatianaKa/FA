@@ -21,7 +21,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             app:cardCornerRadius="30dp">
 
             <ImageView
@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="6dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="25dp"
             android:background="@color/white"
             app:cardCornerRadius="15dp">
 
@@ -44,6 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
+                android:textColor="@color/black"
                 android:id="@+id/tvDateMain"
                 android:text="Среда, 25 мая" />
         </androidx.cardview.widget.CardView>
@@ -62,7 +63,7 @@
             android:layout_height="match_parent">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView"
+                android:id="@+id/cvHeight"
                 android:layout_width="165dp"
                 android:layout_height="80dp"
                 android:layout_marginLeft="10dp"
@@ -99,6 +100,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cvWeight"
                 android:layout_width="165dp"
                 android:layout_height="80dp"
                 android:layout_marginTop="10dp"
@@ -144,7 +146,7 @@
                 android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView"
+                app:layout_constraintTop_toBottomOf="@+id/cvHeight"
                 tools:ignore="MissingConstraints">
 
                 <LinearLayout

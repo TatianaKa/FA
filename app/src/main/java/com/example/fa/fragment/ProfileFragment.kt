@@ -5,9 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.fa.R
+import com.example.fa.adapter.ActivityAdapter
 import com.example.fa.databinding.FragmentProfileBinding
+import com.example.fa.model.Activity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
@@ -16,6 +19,7 @@ import com.google.firebase.ktx.Firebase
 
 
 class ProfileFragment : Fragment() {
+    private var activityList = arrayListOf<Activity>()
     private var db= Firebase.firestore
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +38,9 @@ class ProfileFragment : Fragment() {
                 }
             }
         }
+
+
+
         return binding.root
     }
 }

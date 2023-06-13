@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.fa.R
+import com.example.fa.main.EditDataActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
@@ -98,7 +99,6 @@ class RegActivity : AppCompatActivity() {
                             db.collection("User")
                                 .add(user)
                                 .addOnSuccessListener { documentReference ->
-
                                     val intent = Intent(this, DataRegActivity::class.java)
                                     intent.putExtra("path", documentReference.id)
                                     startActivity(intent)
