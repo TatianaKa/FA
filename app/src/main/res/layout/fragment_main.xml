@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="270dp"
+        android:layout_height="280dp"
         android:background="@drawable/main"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -171,7 +171,7 @@
                         android:layout_gravity="start"
                         android:layout_marginTop="10dp"
                         android:layout_marginLeft="10dp"
-                        android:text="1 стакан"
+                        android:text="0 стаканов"
                         android:id="@+id/tvQty"
                         android:textSize="30sp" />
 

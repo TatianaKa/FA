@@ -69,24 +69,30 @@ class MainFragment : Fragment() {
         binding.cvHeight.setOnClickListener {
             val intent= Intent(binding.root.context, EditDataActivity::class.java)
             intent.putExtra("type","Height")
+            intent.putExtra("startValue",binding.tvHeight.text)
             startActivity(intent)
         }
         binding.cvWeight.setOnClickListener {
             val intent=Intent(binding.root.context,EditDataActivity::class.java)
             intent.putExtra("type","Weight")
+            intent.putExtra("startValue",binding.tvWeight.text)
             startActivity(intent)
         }
 
         binding.btnAddWater.setOnClickListener {
             qtyGlass+=1
             var glass="стакан"
-            if(qtyGlass>=1 && qtyGlass<6){
+            if(qtyGlass==1){
+                glass="стакан"
+            }
+            else if(qtyGlass>1 && qtyGlass<6){
                 glass="стакана"
             }
             else if(qtyGlass>=6){
                 glass="стаканов"
             }
             binding.tvQty.text="$qtyGlass $glass"
+
         }
 
         binding.tvDateMain.setText("$dayWeek ,$day $nameMonth")

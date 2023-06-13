@@ -6,11 +6,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".fragment.ProfileFragment">
+    <TextView
+        android:id="@+id/tvExit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Выйти"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_gravity="end"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        />
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_gravity="center_horizontal"
         app:cardCornerRadius="100dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_height="wrap_content">
         <ImageView
             android:layout_width="150dp"
@@ -26,10 +37,33 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
         android:textSize="20sp"/>
-    <androidx.cardview.widget.CardView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Активность за время использования"
+        android:textColor="@color/black"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:layout_gravity="center"/>
+        android:textSize="20sp"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvActivityMain"
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        tools:listitem="@layout/list_activity"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Достижения"
+        android:textColor="@color/black"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvAchievement"
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="290dp"
+        tools:listitem="@layout/list_achievement"/>
 
 </LinearLayout>

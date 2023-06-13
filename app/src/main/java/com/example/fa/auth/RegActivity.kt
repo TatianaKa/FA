@@ -5,10 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.fa.R
@@ -77,38 +74,51 @@ class RegActivity : AppCompatActivity() {
         var confPass = etRegConfPass.text.toString()
 
         if (email.isEmpty() || pass.isEmpty() || confPass.isEmpty() || name.isEmpty()) {
-            // Toast.makeText(this, "Пустое значение. Пожалуйста введите все данные", Toast.LENGTH_SHORT).show()
-        } else if (pass != confPass) {
-            // Toast.makeText(this, "Не совпадают пароли", Toast.LENGTH_SHORT).show()
-        } else {
-            val auth= FirebaseAuth.getInstance()
-            auth.createUserWithEmailAndPassword(email,pass).addOnSuccessListener {
-                //tvError.setText("Добавлено")
-            }
-            storageRef.getReference("images").child(System.currentTimeMillis().toString())
-                .putFile(uri)
-                .addOnSuccessListener { task ->
-                    task.metadata!!.reference!!.downloadUrl
-                        .addOnSuccessListener {
-                            val user = hashMapOf(
-                                "Name" to name,
-                                "Email" to email,
-                                "Pass" to pass,
-                                "url" to it.toString()
-                            )
-                            db.collection("User")
-                                .add(user)
-                                .addOnSuccessListener { documentReference ->
-                                    val intent = Intent(this, DataRegActivity::class.java)
-                                    intent.putExtra("path", documentReference.id)
-                                    startActivity(intent)
-                                }
-                                .addOnFailureListener { e ->
+             Toast.makeText(this, "Пустое значение. Пожалуйста введите все данные", Toast.LENGTH_SHORT).show()
+        }
+        else if(pass.length<6){
+            Toast.makeText(this, "Пароль должен содержать 6 символов", Toast.LENGTH_SHORT).show()
+        }
+        else if (pass != confPass) {
+            Toast.makeText(this, "Не совпадают пароли", Toast.LENGTH_SHORT).show()
+        }
+        else {
+            val auth = FirebaseAuth.getInstance()
+            auth.createUserWithEmailAndPassword(email, pass).addOnSuccessListener {
+                Toast.makeText(this, "Пользователь успешно добавлен", Toast.LENGTH_SHORT).show()
+                try {
+                    storageRef.getReference("images").child(System.currentTimeMillis().toString())
+                        .putFile(uri)
+                        .addOnSuccessListener { task ->
+                            task.metadata!!.reference!!.downloadUrl
+                                .addOnSuccessListener {
+                                    val user = hashMapOf(
+                                        "Name" to name,
+                                        "Email" to email,
+                                        "Pass" to pass,
+                                        "url" to it.toString()
+                                    )
+                                    db.collection("User")
+                                        .add(user)
+                                        .addOnSuccessListener { documentReference ->
+                                            val intent = Intent(this, DataRegActivity::class.java)
+                                            intent.putExtra("path", documentReference.id)
+                                            startActivity(intent)
+                                        }
+                                        .addOnFailureListener { e ->
 
+                                        }
                                 }
                         }
+                } catch (e: Exception) {
+                    Toast.makeText(this, "Добавьте изображение для продолжения", Toast.LENGTH_SHORT)
+                        .show()
                 }
 
+            }
+                .addOnFailureListener {
+                    Toast.makeText(this, "Неправильно указан email или он уже зарегистрирован", Toast.LENGTH_SHORT).show()
+                }
         }
 
     }

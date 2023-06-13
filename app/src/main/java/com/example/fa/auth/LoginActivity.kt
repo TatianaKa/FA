@@ -51,10 +51,10 @@ class LoginActivity : AppCompatActivity() {
                     task ->
                 if(task.isSuccessful){
                     startActivity(Intent(this, MainActivity::class.java))
-                    // Toast.makeText(this,"Авторизация прошла успешно", Toast.LENGTH_SHORT).show()
+                     Toast.makeText(this,"Авторизация прошла успешно", Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    // Toast.makeText(this, "Авторизация не удалась", Toast.LENGTH_SHORT).show()
+                     Toast.makeText(this, "Авторизация не удалась", Toast.LENGTH_SHORT).show()
                 }
             }
         }

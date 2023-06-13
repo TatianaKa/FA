@@ -8,10 +8,24 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/tvBackMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Назад"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_marginTop="15sp"
+        android:layout_marginLeft="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
         android:id="@+id/tvEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Изменить"
+        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:layout_marginBottom="30sp"
         app:layout_constraintBottom_toTopOf="@+id/etEdit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -20,7 +34,8 @@
         android:id="@+id/etEdit"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:hint="Edit"
+        android:hint="Изменить"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +46,8 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginBottom="10dp"
-        android:text="Edit"
+        android:text="Изменить"
+        android:backgroundTint="@color/blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etEdit" />

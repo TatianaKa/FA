@@ -1,5 +1,6 @@
 package com.example.fa.auth
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,11 +17,11 @@ class DataRegActivity : AppCompatActivity() {
     private lateinit var spGender: Spinner
     private lateinit var spTag: Spinner
     private lateinit var btnRegData: Button
-    private lateinit var tvBackFirstReg: TextView
     private lateinit var genderName:String
     private lateinit var tagName:String
     val gender = arrayOf("Мужской","Женский")
     val tag = arrayOf("набор мышечной массы","похудение","поддержание веса")
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_data_reg)
@@ -34,7 +35,6 @@ class DataRegActivity : AppCompatActivity() {
         spTag=findViewById(R.id.spTag)
         btnRegData=findViewById(R.id.btnRegData)
         btnRegData.setOnClickListener { SaveData() }
-        tvBackFirstReg=findViewById(R.id.tvBackFirstReg)
 
         val genderAdapter=
             ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,gender)
@@ -78,7 +78,7 @@ class DataRegActivity : AppCompatActivity() {
         var age = etRegAge.text.toString()
         val path = intent.getStringExtra("path").toString()
         if (weight.isEmpty() || height.isEmpty() || age.isEmpty()) {
-            // Toast.makeText(this, "Пустое значение. Пожалуйста введите все данные", Toast.LENGTH_SHORT).show()
+             Toast.makeText(this, "Пустое значение. Пожалуйста введите все данные", Toast.LENGTH_SHORT).show()
         }
         else {
             val user = hashMapOf(
@@ -96,7 +96,6 @@ class DataRegActivity : AppCompatActivity() {
                 }
                 .addOnFailureListener { e ->
                 }
-
         }
     }
 }

@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0.5"
+        android:alpha="0.7"
         android:background="@drawable/work"
         android:orientation="vertical">
 
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:text="Лучшая тренировка в мире"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="15dp"
             android:textColor="@color/white"
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,9 +33,9 @@
             android:layout_height="wrap_content"
             android:text="Данная тренировка подходит под все категории"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="15dp"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="17sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rvNameWorkout" />
 
@@ -43,12 +43,22 @@
             android:id="@+id/rvTimeWorkout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="30 минут"
+            android:layout_marginLeft="15dp"
+            android:text="30"
             android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/rvStartWorkout"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="минут"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_marginLeft="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/rvStartWorkout"
+            app:layout_constraintStart_toEndOf="@+id/rvTimeWorkout" />
 
         <Button
             android:id="@+id/rvStartWorkout"

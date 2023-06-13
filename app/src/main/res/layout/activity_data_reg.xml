@@ -6,12 +6,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".auth.DataRegActivity">
-    <TextView  android:layout_width="wrap_content"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Для продолжения \n введите данные о своем теле"
         android:layout_gravity="center"
         android:textAlignment="center"
         android:textSize="20sp"
+        android:textColor="@color/black"
         android:layout_marginTop="50dp"/>
     <EditText
         android:id="@+id/etRegWeight"
@@ -20,6 +22,7 @@
         android:layout_marginTop="50dp"
         android:paddingLeft="8sp"
         android:hint="Вес"
+        android:inputType="number"
         android:layout_gravity="center"
         android:background="@drawable/shape"/>
     <EditText
@@ -29,6 +32,7 @@
         android:layout_marginTop="10dp"
         android:paddingLeft="8sp"
         android:layout_gravity="center"
+        android:inputType="number"
         android:hint="Рост"
         android:background="@drawable/shape"/>
     <EditText
@@ -38,6 +42,7 @@
         android:layout_marginTop="10dp"
         android:paddingLeft="8sp"
         android:layout_gravity="center"
+        android:inputType="number"
         android:hint="Возраст"
         android:background="@drawable/shape"/>
     <Spinner
@@ -64,10 +69,5 @@
         android:text="Продолжить"
         android:textSize="20sp"
         app:cornerRadius="15dp" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Auth"
-        android:id="@+id/tvBackFirstReg"/>
 
 </LinearLayout>

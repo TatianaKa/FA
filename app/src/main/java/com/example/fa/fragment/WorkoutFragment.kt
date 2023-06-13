@@ -1,5 +1,6 @@
 package com.example.fa.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,14 +15,13 @@ import com.example.fa.model.Workout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import java.util.*
 
 
 class WorkoutFragment : Fragment() {
     private var workoutList = arrayListOf<Workout>()
-    private var db= Firebase.firestore
+    private var db= FirebaseFirestore.getInstance()
+    private val user= FirebaseAuth.getInstance()
     private lateinit var tvDate: TextView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,13 +59,12 @@ class WorkoutFragment : Fragment() {
             11->nameMonth="ноября"
             12->nameMonth="декабря"
         }
-        //binding.tvTimeWorkout.setText("$dayWeek ,$day $nameMonth")
+        binding.tvTimeWorkout.setText("$dayWeek ,$day $nameMonth")
 
         binding.rvWorkout.layoutManager= LinearLayoutManager(binding.root.context)
 
         workoutList= arrayListOf()
-        val user= FirebaseAuth.getInstance()
-        db= FirebaseFirestore.getInstance()
+
         db.collection("User").whereEqualTo("Email",user.currentUser?.email).
         addSnapshotListener { documents: QuerySnapshot?, error ->
             if (documents != null) {
@@ -73,7 +72,6 @@ class WorkoutFragment : Fragment() {
                     Glide.with(binding.root.context).load(document.data.get("url")).into(binding.imgUserWorkout)
                     db.collection("Workout").whereEqualTo("tag",document.data.get("Tag").toString()).get()
                         .addOnSuccessListener {
-                            var duration=0
                             if(!it.isEmpty){
                                 for(data in it.documents){
                                     val workout: Workout? =data.toObject(Workout::class.java)
@@ -82,7 +80,7 @@ class WorkoutFragment : Fragment() {
                                     }
                                 }
 
-                                // binding.rvWorkout.adapter= WorkoutAdapter(workoutList )
+                                 binding.rvWorkout.adapter= WorkoutAdapter(workoutList )
                                 var adapter= WorkoutAdapter(workoutList)
                                 binding.rvWorkout.adapter=adapter
                                 adapter.setOnTimeClickListener(
@@ -105,7 +103,6 @@ class WorkoutFragment : Fragment() {
             }
 
         }
-
         return binding.root
     }
 }
