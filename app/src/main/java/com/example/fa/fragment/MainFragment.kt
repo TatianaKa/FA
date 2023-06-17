@@ -32,6 +32,7 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         val binding = FragmentMainBinding.inflate(inflater)
         val c = Calendar.getInstance()
 
