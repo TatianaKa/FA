@@ -71,39 +71,6 @@ class WorkoutFragment : Fragment() {
                 for (document in documents) {
                     Glide.with(binding.root.context).load(document.data.get("url"))
                         .into(binding.imgUserWorkout)
-                    val tag = document.data.get("Tag").toString()
-                    if (!tag.isEmpty()) {
-                        db.collection("Workout").whereEqualTo("tag",tag).get()
-                            .addOnSuccessListener {
-                                if (!it.isEmpty) {
-                                    for (data in it.documents) {
-                                        val workout: Workout? = data.toObject(Workout::class.java)
-                                        if (workout != null) {
-                                            workoutList.add(workout)
-                                        }
-                                    }
-
-                                    binding.rvWorkout.adapter = WorkoutAdapter(workoutList)
-                                    var adapter = WorkoutAdapter(workoutList)
-                                    binding.rvWorkout.adapter = adapter
-                                    adapter.setOnTimeClickListener(
-                                        object : WorkoutAdapter.onItemClickListener {
-                                            override fun onItemClick(position: Int) {
-                                                val activity = hashMapOf(
-                                                    "UserEmail" to user.currentUser?.email,
-                                                    "Date" to "$day $nameMonth",
-                                                    "Duration" to workoutList[position].timeWork
-                                                )
-                                                db.collection("Activity").add(activity)
-                                                    .addOnSuccessListener {
-                                                    }
-                                            }
-                                        }
-                                    )
-                                }
-                            }
-                    }
-                    else{
                         db.collection("Workout").get()
                             .addOnSuccessListener {
                                 if (!it.isEmpty) {
@@ -133,7 +100,8 @@ class WorkoutFragment : Fragment() {
                                     )
                                 }
                             }
-                    }
+
+
                 }
             }
 
